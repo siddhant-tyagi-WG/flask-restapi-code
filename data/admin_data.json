@@ -1,0 +1,16 @@
+{
+   "admin_list": [
+      {
+         "admin_id": "sid@gmail.com",
+         "admin_password": "hashcode1!"
+      },
+      {
+         "admin_id": "sid2@gmail.com",
+         "admin_password": "hashcode2!"
+      },
+      {
+         "admin_id": "sid2@gmail.com",
+         "admin_password": "asdf123"
+      }
+   ]
+}

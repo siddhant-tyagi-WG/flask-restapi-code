@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Books API"
+paths:
+  /books:
+    get:
+      summary: "Get all books"
+      responses:
+        200:
+          description: "Return all books"
+    /filter:
+      get:
+        summary: "Filter books by title, genre, or author"
+        parameters:
+          - name: title
+            in: query
+            type: string
+            required: false
+            description: "Title of the book"
+          - name: genre
+            in: query
+            type: string
+            required: false
+            description: "Genre of the book"
+          - name: author
+            in: query
+            type: string
+            required: false
+            description: "Author of the book"
+        responses:
+          200:
+            description: "Return filtered books"
+  /book:
+    get:
+      summary: "Get a single book by ID"
+      parameters:
+        - name: id
+          in: query
+          type: integer
+          required: true
+          description: "ID of the book"
+      responses:
+        200:
+          description: "Return the book"
+        404:
+          description: "Book not found"
+    post:
+      summary: "Add a new book"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: book
+          required: true
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: "id of the book"
+              title:
+                type: string
+                description: "Title of the book"
+              author:
+                type: string
+                description: "Author of the book"
+              genre:
+                type: string
+                description: "Genre of the book"
+              available:
+                type: int
+                description: "in binary"
+
+
+      responses:
+        200:
+          description: "Book added successfully"
+        404:
+          description: "Error occurred while adding the book"
+    put:
+      summary: "Update an existing book"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: book
+          required: true
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: "ID of the book"
+              title:
+                type: string
+                description: "Title of the book"
+              author:
+                type: string
+                description: "Author of the book"
+              genre:
+                type: string
+                description: "Genre of the book"
+              year:
+                type: integer
+                description: "Year of the book"
+              pages:
+                type: integer
+                description: "Number of pages in the book"
+      responses:
+        201:
+          description: "Book updated successfully"
+    delete:
+      summary: "Delete an existing book"
+      parameters:
+        - name: id
+          in: query
+          type: integer
+          required: true
+          description: "ID of the book"
+      responses:
+        200:
+          description: "Book deleted successfully"
+        404:
+          description: "Book not found"
